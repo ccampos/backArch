@@ -2,9 +2,10 @@ define([
 	'jquery',
 	'underscore',
 	'backbone',
-	'router'
-], function($, _, Backbone, Router){
+	'router' // Request router.js
+], function($, _, Backbone, Router) {
 	var initialize = function(){
+		// Pass in our Route module and call it's initialize function
 		Router.initialize();
 	}
 
