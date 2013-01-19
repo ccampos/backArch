@@ -1,10 +1,7 @@
 define([
-	'jquery',
-	'underscore',
-	'backbone',
 	'views/projects/list',
 	'views/users/list'
-], function($, _, Backbone, ProjectListView, UserListView) {
+], function(ProjectListView, UserListView) {
 	var AppRouter = Backbone.Router.extend({
 		routes: {
 			// Define some URL routes
@@ -24,7 +21,17 @@ define([
 			var projectListView = new ProjectListView();
 			projectListView.render();
 		});
-	}
 
+		// As above, call render on our loaded module
+		// 'views/users/list'
+		app_router.on('defaultAction', function(actions) {
+			// We have no matching route, lets just log what the URL was
+			console.log('No route:', actions);
+		});
+		Backbone.history.start();
+	};
 
+	return {
+		initialize: initialize
+	};
 });
